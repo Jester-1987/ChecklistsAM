@@ -8,33 +8,49 @@
 import UIKit
 
 protocol AddItemViewControllerDelegate: AnyObject {
-    func addItemViewControllerDidCancel(
-        _ controller: AddItemViewController)
-    func addItemViewController(
-        _ controller: AddItemViewController,
+    func itemDetailViewControllerDidCancel(
+        _ controller: ItemDetailViewController)
+    func itemDetailViewController(
+        _ controller: ItemDetailViewController,
         didFinishAdding item: ChecklistItem
     )
+    func itemDetailViewController(
+        _ controller: ItemDetailViewController,
+        didFinishEditing item: ChecklistItem)
 }
 
-class AddItemViewController: UITableViewController, UITextFieldDelegate {
+class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextField!
     weak var delegate:AddItemViewControllerDelegate?
+    var itemToEdit: ChecklistItem?
     
     // MARK: - Actions
     @IBAction func cancel() {
-        delegate?.addItemViewControllerDidCancel(self)
+        delegate?.itemDetailViewControllerDidCancel(self)
     }
     @IBAction func done() {
-        let item = ChecklistItem()
-        item.text = textField.text!
-        
-        delegate?.addItemViewController(self, didFinishAdding: item)
+        if let item = itemToEdit {
+            item.text = textField.text!
+            delegate?.itemDetailViewController(self, didFinishAdding: item)
+        }
+        else {
+            let item = ChecklistItem()
+            item.text = textField.text!
+            
+            delegate?.itemDetailViewController(self, didFinishAdding: item)
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
+        
+        if let itemToEdit = itemToEdit {
+            title = "Edit Item"
+            textField.text = itemToEdit.text
+            doneBarButton.isEnabled = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

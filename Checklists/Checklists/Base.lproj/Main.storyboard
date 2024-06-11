@@ -16,27 +16,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="HHd-SW-gWF">
-                                <rect key="frame" x="0.0" y="50" width="393" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="HHd-SW-gWF">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HHd-SW-gWF" id="ryO-8b-vqf">
-                                    <rect key="frame" x="0.0" y="0.0" width="349" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="330.66666666666669" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onb-EU-Uj7">
-                                            <rect key="frame" x="20" y="10.999999999999998" width="321" height="21.333333333333329"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onb-EU-Uj7">
+                                            <rect key="frame" x="41" y="9" width="302.66666666666669" height="21.333333333333329"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOb-OB-SBR">
+                                            <rect key="frame" x="20" y="0.0" width="13" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="onb-EU-Uj7" secondAttribute="bottom" constant="0.67000000000000004" id="Uad-yC-3Nd"/>
-                                        <constraint firstItem="onb-EU-Uj7" firstAttribute="trailing" secondItem="ryO-8b-vqf" secondAttribute="trailingMargin" id="Zbv-EE-dwe"/>
-                                        <constraint firstItem="onb-EU-Uj7" firstAttribute="top" secondItem="ryO-8b-vqf" secondAttribute="topMargin" id="m0j-ln-NVF"/>
-                                        <constraint firstItem="onb-EU-Uj7" firstAttribute="leading" secondItem="ryO-8b-vqf" secondAttribute="leadingMargin" id="wq7-Rr-sP4"/>
-                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="cWI-eb-MoT" kind="show" identifier="EditItem" trigger="accessoryAction" id="MXc-gD-f2u"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -54,12 +59,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0C-G9-2jC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742.74809160305335" y="-129.57746478873241"/>
+            <point key="canvasLocation" x="724" y="-130"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="P1G-ho-mwu">
             <objects>
-                <tableViewController id="cWI-eb-MoT" customClass="AddItemViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cWI-eb-MoT" customClass="ItemDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="nOS-mZ-Zwq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,6 +144,9 @@
             <point key="canvasLocation" x="-183.96946564885496" y="-129.57746478873241"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="48h-Wx-QE5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
